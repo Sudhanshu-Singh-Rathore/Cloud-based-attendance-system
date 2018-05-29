@@ -46,7 +46,7 @@ def Submit():
     file.write(string10+"\n")
  
     file.close() 
-    d = Button(root,text='Save attendance',command=Save, bg="YELLOW")
+    d = Button(root,text='Save attendance',command=Save, bg="YELLOW", highlightbackground="red", highlightcolor="red", highlightthickness=5)
     d.grid(row=23, column=1)
 
 def batch():
@@ -71,16 +71,16 @@ def batch():
     sub = ep.get()
     if(string=="CSE-3"):
         #print("world")
-        Label(root, text="Roll no. 1", bg="orange").grid(row=10)
-        Label(root, text="Roll no. 2", bg="orange").grid(row=11)
-        Label(root, text="Roll no. 3", bg="orange").grid(row=12)
-        Label(root, text="Roll no. 4", bg="orange").grid(row=13)
-        Label(root, text="Roll no. 5", bg="orange").grid(row=14)
-        Label(root, text="Roll no. 6", bg="orange").grid(row=15)
-        Label(root, text="Roll no. 7", bg="orange").grid(row=16)
-        Label(root, text="Roll no. 8", bg="orange").grid(row=17)
-        Label(root, text="Roll no. 9", bg="orange").grid(row=18)
-        Label(root, text="Roll no. 10", bg="orange").grid(row=19)
+        Label(root, text="Roll no. 1", bg="orange", highlightbackground="red", highlightcolor="red", highlightthickness=5).grid(row=10)
+        Label(root, text="Roll no. 2", bg="orange", highlightbackground="red", highlightcolor="red", highlightthickness=5).grid(row=11)
+        Label(root, text="Roll no. 3", bg="orange", highlightbackground="red", highlightcolor="red", highlightthickness=5).grid(row=12)
+        Label(root, text="Roll no. 4", bg="orange", highlightbackground="red", highlightcolor="red", highlightthickness=5).grid(row=13)
+        Label(root, text="Roll no. 5", bg="orange", highlightbackground="red", highlightcolor="red", highlightthickness=5).grid(row=14)
+        Label(root, text="Roll no. 6", bg="orange", highlightbackground="red", highlightcolor="red", highlightthickness=5).grid(row=15)
+        Label(root, text="Roll no. 7", bg="orange", highlightbackground="red", highlightcolor="red", highlightthickness=5).grid(row=16)
+        Label(root, text="Roll no. 8", bg="orange", highlightbackground="red", highlightcolor="red", highlightthickness=5).grid(row=17)
+        Label(root, text="Roll no. 9", bg="orange", highlightbackground="red", highlightcolor="red", highlightthickness=5).grid(row=18)
+        Label(root, text="Roll no. 10", bg="orange", highlightbackground="red", highlightcolor="red", highlightthickness=5).grid(row=19)
         e2 = Entry(root)
         e3 = Entry(root)
         e4 = Entry(root)
@@ -101,7 +101,7 @@ def batch():
         e9.grid(row=17, column=1)
         e10.grid(row=18, column=1)
         e11.grid(row=19, column=1)
-        C = Button(root,text='Submit',command=Submit, bg="YELLOW")
+        C = Button(root,text='Submit',command=Submit, bg="YELLOW", highlightbackground="red", highlightcolor="red", highlightthickness=5)
         C.grid(row=21,column=1)
 
 def view():
@@ -121,6 +121,7 @@ def view():
     global string
     global date
     global sub
+    global T
     
     string = e1.get() 
     date = et.get()
@@ -138,15 +139,16 @@ def view():
     
 
     file = open("RECEIVED.txt", "r") 
-    Label(root, text=file.read()).grid(row=10,pady=10,padx=10)
+    #Label(root, text=file.read()).grid(row=10,pady=10,padx=10)
+    T.insert(END,file.read())
     
  
 
 from Tkinter import *
 root = Tk()
 
-C = Canvas(root, bg="black", height=250, width=300)
-filename = PhotoImage(file = "/home/sudhanshu/Desktop/3.png")
+#C = Canvas(root, bg="black", height=250, width=300)
+filename = PhotoImage(file = "/home/sudhanshu/Desktop/3.png") # your path here.
 background_label = Label(root, image=filename)
 background_label.place(x=0, y=0, relwidth=1, relheight=1)
 root.geometry("500x500")
@@ -155,13 +157,13 @@ root.geometry("500x500")
 #background_label = root.Label(parent, image=background_image)
 #background_label.place(x=0, y=0, relwidth=1, relheight=1)
 
-root.configure(background='BLUE')
+#root.configure(background='BLUE')
 
 root.title('Cloud Based Attendance System')
-Label(root, text="Cloud Based Attendance System",font=20,bg="yellow").grid(row=0,column=1, pady=20)
-Label(root, text="Batch", bg="orange").grid(row=2)
-Label(root, text="Date", bg="orange").grid(row=4)
-Label(root, text="Subject", bg="orange").grid(row=5)
+Label(root, text="Cloud Based Attendance System",font=20,bg="yellow", highlightbackground="red", highlightcolor="red", highlightthickness=5).grid(row=0,column=1, pady=20)
+Label(root, text="Batch", bg="orange", highlightbackground="red", highlightcolor="red", highlightthickness=5).grid(row=2)
+Label(root, text="Date", bg="orange", highlightbackground="red", highlightcolor="red", highlightthickness=5).grid(row=4)
+Label(root, text="Subject", bg="orange", highlightbackground="red", highlightcolor="red", highlightthickness=5).grid(row=5)
 
 e1 = Entry(root)
 et = Entry(root)
@@ -175,11 +177,14 @@ ep.grid(row=5, column=1)
 #e = Entry(root)
 #e2.grid(row=2)
 
-b = Button(root,text='Enter',command = batch,bg="green")
+b = Button(root,text='Enter',command = batch,bg="green", highlightbackground="red", highlightcolor="red", highlightthickness=5)
 b.grid(row=6,column=1,pady=10)
 
-F = Button(root,text='View Attendance',command = view,bg="yellow")
+F = Button(root,text='View Attendance',command = view,bg="yellow", highlightbackground="red", highlightcolor="red", highlightthickness=5)
 F.grid(row=8,column=1,pady=10)
+
+T = Text(root, height=4, width=50, highlightbackground="black", highlightcolor="red", highlightthickness=5)
+T.grid(row=10, column=1)
 
 
 
